@@ -63,9 +63,3 @@ class RegistrationPage:
                 location,
             )
         )
-
-
-
-
-
-

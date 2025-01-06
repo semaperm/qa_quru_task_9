@@ -3,7 +3,6 @@ from demoqa_tests.practice_form_page import RegistrationPage
 def test_student_registration_form():
     registration_page = RegistrationPage()
     registration_page.open()
-
     registration_page.fill_full_name('Sema', 'Semenov')
     registration_page.fill_email('sema@test.com')
     registration_page.fill_gender("Male")

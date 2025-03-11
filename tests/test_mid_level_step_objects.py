@@ -29,3 +29,4 @@ def test_student_registration_form():
         "NCR Delhi",
     )
 
+

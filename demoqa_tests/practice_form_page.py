@@ -8,9 +8,9 @@ class RegistrationPage:
         browser.driver.execute_script("$('#fixedban').remove()")
         browser.driver.execute_script("$('footer').remove()")
 
-    def fill_full_name(self, value):
-        browser.element("#firstName").should(be.blank).type(value)
-        browser.element("#lastName").should(be.blank).type(value)
+    def fill_full_name(self, first_name, last_name):
+        browser.element("#firstName").should(be.blank).type(first_name)
+        browser.element("#lastName").should(be.blank).type(last_name)
 
     def fill_email(self, value):
         browser.element("#userEmail").should(be.blank).type(value)
@@ -22,11 +22,13 @@ class RegistrationPage:
         browser.element("#userNumber").should(be.blank).type(value).press_tab()
 
 
-    def fill_date_of_birth(self, value):
-        browser.element("#dateOfBirthInput").type(value).press_enter()
+    def fill_date_of_birth(self, day, month, year):
+        browser.element('#dateOfBirth').click().element(f'[value="{month - 1}"]').click()
+        browser.element('#dateOfBirth').element(f'[value="{year}"]').click()
+        browser.element('.react-datepicker__month').element(by.text(f'{day}')).click()
 
-    def fill_subject(self, value):
-        browser.element("#subjectsInput").type(value).press_tab()
+    def fill_subject(self, subject):
+        browser.element('#subjectsInput').click().type(subject).should(be.visible).press_enter()
 
     def fill_interest_sport(self):
         browser.element(by.text("Sports")).click()
@@ -40,10 +42,14 @@ class RegistrationPage:
     def fill_picture(self, value):
         browser.element('[id="uploadPicture"]').set_value(os.path.abspath(value))
 
-    def fill_full_address(self, value):
-        browser.element("#currentAddress").type(value)
-        browser.element("#state").click().element(by.text("NCR")).click()
-        browser.element("#city").click().element(by.text("Delhi")).click()
+    def fill_current_address(self, current_address):
+        browser.element('#currentAddress').should(be.blank).type(current_address)
+
+    def fill_state_and_city(self, state, city):
+        browser.element('#state').click()
+        browser.element('#react-select-3-input').type(state).should(be.visible).press_enter()
+        browser.element('#city').click()
+        browser.element('#react-select-4-input').type(city).should(be.visible).press_enter()
 
     def submit_button(self):
         browser.element("#submit").click()

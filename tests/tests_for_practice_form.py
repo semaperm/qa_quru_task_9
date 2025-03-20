@@ -25,7 +25,7 @@ def test_practice_form():
         "test@test.ru",
         "Male",
         "1231231234",
-        "20 September,1995",
+        "20 September,1991",
         "Maths",
         "Sports, Music, Reading",
         "image.jpg",

@@ -28,7 +28,7 @@ def test_practice_form():
         "20 September,1991",
         "Maths",
         "Sports, Music, Reading",
-        "image.jpg",
+        "Proverka.jpg",
         "City Name, Street Name",
         "NCR Noida"
     )
